@@ -20,7 +20,7 @@ public class DemoApplication {
         return "Hello World! from personal";
     }
 
-    @RequestMapping("/bot")
+    @PostMapping("/bot")
     public String botResponse() {
 
         // Process the request and generate a response
