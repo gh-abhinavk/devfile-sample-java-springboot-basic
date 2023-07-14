@@ -53,12 +53,18 @@ public class BotController {
         // Generate a response based on the request
         if ("Check Balance".equals(webDto.getIntentName())) {
             Customer customer = customerService.getCustomerInfo(Integer.parseInt(webDto.getAccountNumber()));
+            if (customer ==null ){
+                return " Account number not found";
+            }
+            if(!customer.getPan().equals(webDto.getPan()) ){
+                return " Pan number not found";
+            }
             if (customer.getPan().equals(webDto.getPan())) {
                 int balance = accountService.getBalance(Integer.parseInt(webDto.getAccountNumber()));
                 return "Your balance is " + balance;
             }
         }
-        if("Recent transaction".equals(webDto.getIntentName())){
+       else if("Recent transaction".equals(webDto.getIntentName())){
             Customer customer = customerService.getCustomerInfo(Integer.parseInt(webDto.getAccountNumber()));
             if (customer.getPan().equals(webDto.getPan())) {
                 Logger logg=loggerService.showLog(customer.getAcctID());
@@ -66,8 +72,7 @@ public class BotController {
 
             }
         }
-
-        if("Account number".equals(webDto.getIntentName())){
+      else  if("Account number".equals(webDto.getIntentName())){
             String message=" Account NUmber not found try with different mobile number and pan";
               List<Customer> listCu= customerService.getAllCustomer();
             for (Customer c:listCu) {
@@ -78,6 +83,8 @@ public class BotController {
             }
             return message;
 
+        }else{
+          return "Please try with following  Account balance Recebt Transaction and Account NUmber ";
         }
     }catch (Exception e){
         System.out.println("error");
