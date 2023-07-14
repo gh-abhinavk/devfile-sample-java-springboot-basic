@@ -83,7 +83,13 @@ public class BotController {
             }
             return message;
 
-        }else{
+        }else if("Update Address".equals(webDto.getIntentName())){
+          return "please login to www.db.com internet banking and choose update address";
+        }
+        else if("Lost credit card".equals(webDto.getIntentName())){
+            return "Please login to www.db.com and go to card section and selection block card ";
+        }
+        else{
           return "Please try with following  Account balance Recebt Transaction and Account NUmber ";
         }
     }catch (Exception e){
