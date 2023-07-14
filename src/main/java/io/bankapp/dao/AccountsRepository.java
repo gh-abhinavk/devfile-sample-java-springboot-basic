@@ -1,5 +1,6 @@
 package io.bankapp.dao;
 
+import io.bankapp.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,8 +13,7 @@ public interface AccountsRepository extends CrudRepository<Accounts, Integer>, J
 	@Query("select balance from Accounts where acctID = ?1")
 	public int findBalanceByAcctID(int acctID);
 
-	@Query("select pan from Customer where pan = ?1")
-	public int findAcctByPan(String pan);
+
 
 	@Transactional
 	@Modifying(clearAutomatically = true)

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class BotController {
 
@@ -60,9 +62,22 @@ public class BotController {
             Customer customer = customerService.getCustomerInfo(Integer.parseInt(webDto.getAccountNumber()));
             if (customer.getPan().equals(webDto.getPan())) {
                 Logger logg=loggerService.showLog(customer.getAcctID());
-                return "account number is "+logg.getAcctID()+" transaction type is "+logg.getTransacType()+" initial balance is "+logg.getInitBal() +" current balance is "+logg.getFinalBal();
+                return " transaction type is "+logg.getTransacType()+"   initial balance is "+logg.getInitBal() +" and  current balance is "+logg.getFinalBal();
 
             }
+        }
+
+        if("Account number".equals(webDto.getIntentName())){
+            String message=" Account NUmber not found try with different mobile number and pan";
+              List<Customer> listCu= customerService.getAllCustomer();
+            for (Customer c:listCu) {
+                if(c.getPhoneNo()==Integer.parseInt(webDto.getMobileNumber()) && c.getPan().equals(webDto.getPan())){
+                    message= " ACCOUNT Number is "+c.getAcctID();
+                    break;
+                }
+            }
+            return message;
+
         }
     }catch (Exception e){
         System.out.println("error");

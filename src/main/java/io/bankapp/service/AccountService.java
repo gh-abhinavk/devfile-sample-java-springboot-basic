@@ -1,5 +1,6 @@
 package io.bankapp.service;
 
+import io.bankapp.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +41,6 @@ public class AccountService {
 		accountRepository.saveBalanceByAcctID(destAcctID, amount);
 	}
 
-	public int findAcctByPan(String pan){
-		return accountRepository.findAcctByPan(pan);
-	}
+
 
 }

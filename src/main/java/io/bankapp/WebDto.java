@@ -4,6 +4,7 @@ public class WebDto {
     private String intentName;
     private String accountNumber;
     private String pan;
+    private String mobileNumber;
 
     public String getIntentName() {
         return intentName;
@@ -29,12 +30,21 @@ public class WebDto {
         this.pan = pan;
     }
 
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
     @Override
     public String toString() {
         return "WebDto{" +
                 "intentName='" + intentName + '\'' +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", pan='" + pan + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
                 '}';
     }
 }
