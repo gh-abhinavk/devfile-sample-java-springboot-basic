@@ -37,10 +37,10 @@ public class BankAppApplication {
 
 
 	private  void createDummyData(){
-		Customer customerAlex=new Customer(123456,"Alex","Pune","Maharashtra","India",9001,"pass1234","ALPPB1090N");
-		Customer customerMohan=new Customer(1654321,"Mohan","Hyderabad","Telangana","India",9002,"pass1235","ALPPB10909");
-		Customer customerGoogle=new Customer(420420,"Google","Delhi","Delhi","India",9003,"pass1236","BHJKP98908");
-		Customer customerMicrosoft=new Customer(501501,"Microsoft","Chennai","Tamilnadu","India",9004,"pass1237","KANHJ98765");
+		Customer customerAlex=new Customer(123456,"Alex","Pune","Maharashtra","India",9001,"pass1234","4040");
+		Customer customerMohan=new Customer(1654321,"Mohan","Hyderabad","Telangana","India",9002,"pass1235","5050");
+		Customer customerGoogle=new Customer(420420,"Google","Delhi","Delhi","India",9003,"pass1236","6060");
+		Customer customerMicrosoft=new Customer(501501,"Microsoft","Chennai","Tamilnadu","India",9004,"pass1237","8080");
 
 		customerService.createCustomer(customerAlex);
 		customerService.createCustomer(customerMohan);
