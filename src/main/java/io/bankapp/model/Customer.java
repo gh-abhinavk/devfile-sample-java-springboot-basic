@@ -14,13 +14,14 @@ public class Customer {
 	private String country;
 	private int phoneNo;
 	private String password;
+	private String pan;
 
 	public Customer() {
 
 	}
 
 	public Customer(int acctID, String custName, String city, String state, String country, int phoneNo,
-			String password) {
+			String password,String pan) {
 		super();
 		this.acctID = acctID;
 		this.custName = custName;
@@ -29,6 +30,7 @@ public class Customer {
 		this.country = country;
 		this.phoneNo = phoneNo;
 		this.password = password;
+		this.pan = pan;
 	}
 
 	public int getAcctID() {
@@ -87,4 +89,25 @@ public class Customer {
 		this.password = password;
 	}
 
+	public String getPan() {
+		return pan;
+	}
+
+	public void setPan(String pan) {
+		this.pan = pan;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"acctID=" + acctID +
+				", custName='" + custName + '\'' +
+				", city='" + city + '\'' +
+				", state='" + state + '\'' +
+				", country='" + country + '\'' +
+				", phoneNo=" + phoneNo +
+				", password='" + password + '\'' +
+				", pan='" + pan + '\'' +
+				'}';
+	}
 }

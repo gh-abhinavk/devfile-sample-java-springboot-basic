@@ -40,4 +40,8 @@ public class AccountService {
 		accountRepository.saveBalanceByAcctID(destAcctID, amount);
 	}
 
+	public int findAcctByPan(String pan){
+		return accountRepository.findAcctByPan(pan);
+	}
+
 }

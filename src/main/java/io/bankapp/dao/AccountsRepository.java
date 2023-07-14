@@ -12,6 +12,9 @@ public interface AccountsRepository extends CrudRepository<Accounts, Integer>, J
 	@Query("select balance from Accounts where acctID = ?1")
 	public int findBalanceByAcctID(int acctID);
 
+	@Query("select pan from Customer where pan = ?1")
+	public int findAcctByPan(String pan);
+
 	@Transactional
 	@Modifying(clearAutomatically = true)
 	@Query("update Accounts set balance = balance+?2 where acctID=?1")

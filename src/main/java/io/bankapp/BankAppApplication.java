@@ -37,10 +37,10 @@ public class BankAppApplication {
 
 
 	private  void createDummyData(){
-		Customer customerAlex=new Customer(1234,"Alex","Pune","Maharashtra","India",9001,"pass1234");
-		Customer customerMohan=new Customer(1235,"Mohan","Hyderabad","Telangana","India",9002,"pass1235");
-		Customer customerGoogle=new Customer(1236,"Google","Delhi","Delhi","India",9003,"pass1236");
-		Customer customerMicrosoft=new Customer(1237,"Microsoft","Chennai","Tamilnadu","India",9004,"pass1237");
+		Customer customerAlex=new Customer(123456,"Alex","Pune","Maharashtra","India",9001,"pass1234","ALPPB1090N");
+		Customer customerMohan=new Customer(1654321,"Mohan","Hyderabad","Telangana","India",9002,"pass1235","ALPPB10909");
+		Customer customerGoogle=new Customer(420420,"Google","Delhi","Delhi","India",9003,"pass1236","BHJKP98908");
+		Customer customerMicrosoft=new Customer(501501,"Microsoft","Chennai","Tamilnadu","India",9004,"pass1237","KANHJ98765");
 
 		customerService.createCustomer(customerAlex);
 		customerService.createCustomer(customerMohan);
@@ -52,7 +52,7 @@ public class BankAppApplication {
 		accountController.createAccount(customerGoogle.getAcctID(), 1250000, "Active");
 		accountController.createAccount(customerMicrosoft.getAcctID(), 120000, "Active");
 
-		System.out.printf("getdata:"+accountController.getAccountInfo(1237));
+		System.out.printf("getdata:"+accountController.getAccountInfo(123456));
 
 	}
 
