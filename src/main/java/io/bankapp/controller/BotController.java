@@ -4,8 +4,10 @@ import com.google.cloud.dialogflow.v2.WebhookRequest;
 import com.google.gson.JsonObject;
 import io.bankapp.WebDto;
 import io.bankapp.model.Customer;
+import io.bankapp.model.Logger;
 import io.bankapp.service.AccountService;
 import io.bankapp.service.CustomerService;
+import io.bankapp.service.LoggerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +22,8 @@ public class BotController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private LoggerService loggerService;
 
     @PostMapping("/bot")
     public String botResponse(@RequestBody WebDto webDto) {
@@ -50,6 +54,14 @@ public class BotController {
             if (customer.getPan().equals(webDto.getPan())) {
                 int balance = accountService.getBalance(Integer.parseInt(webDto.getAccountNumber()));
                 return "Your balance is " + balance;
+            }
+        }
+        if("Recent transaction".equals(webDto.getIntentName())){
+            Customer customer = customerService.getCustomerInfo(Integer.parseInt(webDto.getAccountNumber()));
+            if (customer.getPan().equals(webDto.getPan())) {
+                Logger logg=loggerService.showLog(customer.getAcctID());
+                return "account number is "+logg.getAcctID()+" transaction type is "+logg.getTransacType()+" initial balance is "+logg.getInitBal() +" current balance is "+logg.getFinalBal();
+
             }
         }
     }catch (Exception e){
