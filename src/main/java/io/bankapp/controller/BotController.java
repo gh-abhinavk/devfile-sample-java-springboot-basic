@@ -1,5 +1,6 @@
 package io.bankapp.controller;
 
+import com.google.cloud.dialogflow.v2.WebhookRequest;
 import com.google.gson.JsonObject;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class BotController {
 
     @PostMapping("/bot")
-    public String botResponse(@RequestBody Object object) {
+    public String botResponse(@RequestBody WebhookRequest object) {
 
-        System.out.println(object);
+        System.out.println(object.toString());
         // Process the request and generate a response
         String fulfillmentText = processRequest();
 
